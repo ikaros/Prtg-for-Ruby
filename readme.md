@@ -3,6 +3,7 @@ About
 
 Thid gem's first focus is to provide support for the following prtg api resources:
 
+- **passhash:**       Retrieve passhash for later authentications
 - **channels:**       List of the channels of a sensor (sensor ID required)
 - **devices:**        List of all devices
 - **groups:**         List of all groups

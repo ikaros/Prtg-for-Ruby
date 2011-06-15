@@ -9,21 +9,22 @@ describe Prtg::Client, "request_passhash" do
     @host.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
     @valid_args      = [@host, "foo", "bar"]
-    @valid_args_hash = [:host => @host, :username => "foo", :password => "bar"]
+    @valid_args_hash = [:host => @host,
+                        :username => "foo",
+                        :password => "bar"]
 
     @response = mock('Net::HTTPResponse')
-    @response.stubs(:code => '200', :message => "OK", :content_type => "text/html", :body => '111111111')
+    @response.stubs(:code => '200',
+                    :message => "OK",
+                    :content_type => "text/html",
+                    :body => '111111111')
   end
 
 
   it "request the hash via the given host" do
-
     expected_url = "/api/getpasshash.htm?username=foo&password=bar"
     args = Hash[*[:host, :username, :password].zip(@valid_args).flatten]
-
-    p args
     @host.should_receive(:get).with(expected_url).and_return(@response)
-
     Prtg::Client.new(args).getpasshash
   end
 end

@@ -37,8 +37,44 @@ module Prtg # :nodoc:
     end
 
     def getpasshash
-      url = "/api/getpasshash.htm?"+ Utils.url_params(:username => @username, :password => @password)
+      url = "/api/getpasshash.htm?"+
+        Utils.url_params(:username => @username, :password => @password)
       host.get(url).body
+    end
+
+    def getstatus
+      host.get("/api/getstatus.xml")
+    end
+
+    def devices
+      params = {
+        :content => "devices",
+        :output  => "xml",
+        :columns => %w(
+          objid
+          probe
+          group
+          device
+          host
+          downsens
+          partialdownsens
+          downacksens
+          upsens
+          warnsens
+          pausedsens
+          unusualsens
+          undefinedsens).join(",")
+      }
+
+      api_request(params)
+    end
+
+    def auth_params
+      {:username => @username, :passhash => @passhash}
+    end
+
+    def api_request(params)
+      host.get("/api/table.xml?" + Utils.url_params(auth_params.merge(params))).body
     end
 
     def method_missing(*args)

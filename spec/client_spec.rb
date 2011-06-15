@@ -9,7 +9,7 @@ describe Prtg::Client, "request_passhash" do
     @host.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
     @valid_args      = [@host, "foo", "bar"]
-    @valid_args_hash = [host:@host, username:"foo", password:"bar"]
+    @valid_args_hash = [:host => @host, :username => "foo", :password => "bar"]
 
     @response = mock('Net::HTTPResponse')
     @response.stubs(:code => '200', :message => "OK", :content_type => "text/html", :body => '111111111')

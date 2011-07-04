@@ -8,7 +8,8 @@ module Prtg # :nodoc:
     # instance_methods.each { |m| undef_method m unless m =~ /^__/ }
 
     def initialize(client)
-      @client  = client
+      @client = client
+      @output = :xml
     end
 
     def columns(*args)
@@ -22,7 +23,7 @@ module Prtg # :nodoc:
     # content is like a table
     # count is like LIMIT
     # start is like OFFSET
-    QUERY_VALUES = %w[content count start]
+    QUERY_VALUES = %w[content count start output]
 
     QUERY_VALUES.each do |value_field|
       define_method value_field do |value|

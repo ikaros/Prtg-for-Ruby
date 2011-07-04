@@ -52,3 +52,15 @@ Prtg::Query::QUERY_VALUES.each do |value|
     end
   end
 end
+
+
+describe Prtg::Query, "output" do
+
+  include ClientHelperMethods
+
+  it "has :xml as default value" do
+    create_query.
+      send(:instance_variable_get, "@output").
+      should eql(:xml)
+  end
+end

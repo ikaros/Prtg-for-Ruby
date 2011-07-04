@@ -1,31 +1,10 @@
 require "prtg/client"
-require "mocha"
+require  File.dirname(__FILE__) + "/helpers/client_helper_methods.rb"
 
-
-def create_host
-  host = Net::HTTP.new("https://127.0.0.1", 433)
-  host.use_ssl = true
-  host.verify_mode = OpenSSL::SSL::VERIFY_NONE
-  host
-end
-
-def create_client
-  Prtg::Client.new(
-    :host => create_host,
-    :username => "foo",
-    :password => "bar")
-end
-
-def create_response(content)
-  response = mock('Net::HTTPResponse')
-  response.stubs(:code => '200',
-                 :message => "OK",
-                 :content_type => "text/html",
-                 :body => content)
-  response
-end
 
 describe Prtg::Client, "getpasshash" do
+
+  include ClientHelperMethods
 
   it "request the hash via the given host" do
     expected_url = "/api/getpasshash.htm?username=foo&password=bar"
@@ -36,12 +15,18 @@ describe Prtg::Client, "getpasshash" do
 end
 
 describe Prtg::Client, "initialize" do
+
+  include ClientHelperMethods
+
   it "raises an ArgumentError if no host is given" do
     lambda{ Prtg::Client.new() }.should raise_error(ArgumentError)
   end
 end
 
 describe Prtg::Client, "passhash" do
+
+  include ClientHelperMethods
+
   it "uses the getpasshash method" do
     client = create_client
     client.should_receive(:getpasshash).and_return("1111111")

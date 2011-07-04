@@ -36,14 +36,14 @@ Prtg::Query::QUERY_VALUES.each do |value|
 
     include ClientHelperMethods
 
-    it "sets the query #{value}" do
+    it "sets the query's #{value}" do
       create_query.
         send(value, 100).
         send(:instance_variable_get, "@#{value}").
         should eql(100)
     end
 
-    it "overwrites the query #{value}" do
+    it "overwrites the query's #{value}" do
       create_query.
         send(value, 40).
         send(value, 100).

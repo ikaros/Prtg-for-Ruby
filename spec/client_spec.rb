@@ -7,7 +7,7 @@ describe Prtg::Client, "getpasshash" do
   include ClientHelperMethods
 
   it "request the hash via the given host" do
-    expected_url = "/api/getpasshash.htm?username=foo&password=bar"
+    expected_url = "/api/getpasshash.htm?password=bar&username=foo"
     client = create_client
     client.host.should_receive(:get).with(expected_url).and_return(create_response("111111"))
     client.getpasshash

@@ -73,6 +73,10 @@ module Prtg # :nodoc:
       {:username => @username, :passhash => @passhash}
     end
 
+    def live_data
+      Prtg::Query.new(self)
+    end
+
     def api_request(params)
       host.get("/api/table.xml?" + Utils.url_params(auth_params.merge(params))).body
     end

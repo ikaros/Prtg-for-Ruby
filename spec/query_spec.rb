@@ -4,42 +4,44 @@ require "mocha"
 require  File.dirname(__FILE__) + "/helpers/client_helper_methods.rb"
 
 
-describe Prtg::Query, "columns" do
+Prtg::Query::MULTIPLE_VALUES.each do |value|
+  describe Prtg::Query, value.to_s do
 
-  include ClientHelperMethods
+    include ClientHelperMethods
 
-  it "adds column to query" do
-    create_query.
-       columns(:tags).
-       send(:instance_variable_get, "@columns").
-       should eql([:tags])
-  end
+    it "adds #{value} to query" do
+      create_query.
+        send(value, :tags).
+        send(:instance_variable_get, "@query_hash")[value].
+        should eql([:tags])
+    end
 
-  it "adds multiple columns to query at once" do
-    create_query.
-      columns(:objid, :tags).
-      send(:instance_variable_get, "@columns").
-      should eql([:objid, :tags])
-  end
+    it "adds multiple #{value} to query at once" do
+      create_query.
+        send(value, :objid, :tags).
+        send(:instance_variable_get, "@query_hash")[value].
+        should eql([:objid, :tags])
+    end
 
-  it "adds multiple columns to query step by step" do
-    create_query.
-      columns(:objid).
-      columns(:tags).
-      send(:instance_variable_get, "@columns").
-      should eql([:objid, :tags])
+    it "adds multiple #{value} to query step by step" do
+      create_query.
+        send(value, :objid).
+        send(value, :tags).
+        send(:instance_variable_get, "@query_hash")[value].
+        should eql([:objid, :tags])
+    end
   end
 end
 
-Prtg::Query::QUERY_VALUES.each do |value|
-  describe Prtg::Query, value do
+Prtg::Query::VALUES.each do |value|
+  describe Prtg::Query, value.to_s do
 
     include ClientHelperMethods
 
     it "sets the query's #{value}" do
       create_query.
         send(value, 100).
-        send(:instance_variable_get, "@#{value}").
+        send(:instance_variable_get, "@query_hash")[value].
         should eql(100)
     end
 
@@ -47,7 +49,7 @@ Prtg::Query::QUERY_VALUES.each do |value|
       create_query.
         send(value, 40).
         send(value, 100).
-        send(:instance_variable_get, "@#{value}").
+        send(:instance_variable_get, "@query_hash")[value].
         should eql(100)
     end
   end
@@ -62,5 +64,21 @@ describe Prtg::Query, "output" do
     create_query.
       send(:instance_variable_get, "@output").
       should eql(:xml)
+  end
+end
+
+describe Prtg::Query, "execute" do
+
+  include ClientHelperMethods
+
+  it "call the clients 'api_request' instance method" do
+    client = create_client
+    client.should_receive(:api_request).with(:columns => [:id, :tags,], :count => 100).and_return("")
+
+    create_query(client).
+      columns(:id).
+      columns(:tags).
+      count(100).
+      execute
   end
 end

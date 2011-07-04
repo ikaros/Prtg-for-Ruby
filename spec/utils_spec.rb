@@ -16,4 +16,9 @@ describe Prtg::Utils, "url_params" do
       url["pw=bar"]
     end
   end
+
+  it "converts array to comma seperated values" do
+    Prtg::Utils.url_params(:columns => [:id, :tags]).
+      should eql("columns=id,tags")
+  end
 end

@@ -71,7 +71,7 @@ module Prtg # :nodoc:
     end
 
     def auth_params
-      {:username => @username, :passhash => @passhash}
+      {:username => @username, :passhash => passhash}
     end
 
     def live_data

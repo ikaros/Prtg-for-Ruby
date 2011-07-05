@@ -3,10 +3,13 @@ module Prtg # :nodoc:
   # Proxy class to caspule request
   class Query
 
+    # BlankSlate
+    instance_methods.each { |m| undef_method m unless m =~ /^__|send/ }
+
     def initialize(client)
       @prtg_client = client
-      @output      = :xml
-      @query_hash  = {}
+      @query_hash = {}
+      @query_hash[:output] = :xml
     end
 
     # This single values for the query.
@@ -48,7 +51,7 @@ module Prtg # :nodoc:
      if args.first.to_s.start_with? "filter"
        add_filter(*args)
      else
-       super(*args)
+       execute.send(*args)
      end
    end
 

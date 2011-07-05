@@ -82,3 +82,20 @@ describe Prtg::Query, "execute" do
       execute
   end
 end
+
+describe Prtg::Query, "add_filter" do
+
+  include ClientHelperMethods
+
+  it "should add a filter rule to the query " do
+    client = mock('Prtg::Client')
+    client.expects(:api_request).yields('result').with() do |hash|
+      p hash
+      hash.should have_key(:filter_tags)
+    end
+
+    create_query(client).
+      filter_tags("monitor").
+      execute
+  end
+end

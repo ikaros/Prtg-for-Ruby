@@ -36,5 +36,21 @@ module Prtg # :nodoc:
    def execute
      @prtg_client.api_request(@query_hash)
    end
+
+   private
+
+   def add_filter(name, value)
+     @query_hash[name.to_sym] = value
+     self
+   end
+
+   def method_missing(*args)
+     if args.first.to_s.start_with? "filter"
+       add_filter(*args)
+     else
+       super(*args)
+     end
+   end
+
   end
 end

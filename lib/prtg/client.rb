@@ -1,6 +1,7 @@
 require "net/https"
 require "uri"
 require "cgi"
+require "prtg/query"
 require "prtg/utils"
 
 module Prtg # :nodoc:

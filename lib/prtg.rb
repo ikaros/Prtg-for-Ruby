@@ -1,8 +1,9 @@
 # encoding: utf-8
+require "rubygems"
+require "happymapper"
 
 module Prtg
- require "prtg/client"
- require "prtg/utils"
-  # require File.dirname(__FILE__) + "/prtg/connector.rb"
-  # require File.dirname(__FILE__) + "/prtg/utils.rb"
+ Dir.glob(File.dirname(__FILE__) + "/lib/**/*").each do |file_path|
+   require file_path
+ end
 end

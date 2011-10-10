@@ -1,3 +1,5 @@
+require "prtg/sensor"
+
 module Prtg # :nodoc:
 
   # Proxy class to caspule request

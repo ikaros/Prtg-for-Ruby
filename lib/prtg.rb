@@ -8,7 +8,5 @@ require "prtg/sensor"
 require "prtg/utils"
 
 module Prtg
- Dir.glob(File.dirname(__FILE__) + "/lib/**/*").each do |file_path|
-   require file_path
- end
+  VERSION = "0.0.1"
 end

@@ -6,7 +6,7 @@ module Prtg # :nodoc:
   class Query
 
     # BlankSlate
-    instance_methods.each { |m| undef_method m unless m =~ /^(__|send)/ }
+    instance_methods.each { |m| undef_method m unless m =~ /^(__|send|object_id)/ }
 
     def initialize(client)
       @prtg_client = client

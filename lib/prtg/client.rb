@@ -40,7 +40,7 @@ module Prtg # :nodoc:
     def getpasshash
       url = "/api/getpasshash.htm?"+
         Utils.url_params(:username => @username, :password => @password)
-      host.get(url).body
+      host.get(url, {"accept-encoding" => "gzip"}).body
     end
 
     def getstatus

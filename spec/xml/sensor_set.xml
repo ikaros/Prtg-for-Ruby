@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<sensors>
+	<prtg-version>8.4.2.2357</prtg-version>
+	<item>
+		<objid>100001</objid>
+		<probe>prtg HORST 10.10.10.10</probe>
+		<group>Switches</group>
+		<device>onetcore1</device>
+		<sensor>PING</sensor>
+		<status>Up</status>
+		<status_raw>3</status_raw>
+		<message_raw>OK</message_raw>
+		<lastvalue>2 msec</lastvalue>
+		<lastvalue_raw>2.0000</lastvalue_raw>
+		<priority>5</priority>
+		<favorite_raw>0</favorite_raw>
+	</item>
+	<item>
+		<objid>100002</objid>
+		<probe>prtg HORST 10.10.10.10</probe>
+		<group>Switches</group>
+		<device>onettt001</device>
+		<sensor>PING</sensor>
+		<status>Up</status>
+		<status_raw>3</status_raw>
+		<message_raw>OK</message_raw>
+		<lastvalue>0 msec</lastvalue>
+		<lastvalue_raw>0.0000</lastvalue_raw>
+		<priority>5</priority>
+		<favorite_raw>0</favorite_raw>
+	</item>
+</sensors>

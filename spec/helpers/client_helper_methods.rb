@@ -8,11 +8,11 @@ module ClientHelperMethods
     host
   end
 
-  def create_client
-    Prtg::Client.new(
-      :host => create_host,
-      :username => "foo",
-      :password => "bar")
+  def create_client(params={})
+    params = {:host => create_host,
+              :username => "foo",
+              :password => "bar"}.merge(params)
+    Prtg::Client.new(params)
   end
 
   def create_response(content)
@@ -24,7 +24,15 @@ module ClientHelperMethods
     response
   end
 
-  def create_query(client=create_client)
-    Prtg::Query.new(client)
+  def create_query(client=create_client, content=:sensors)
+    Prtg::Query.new(client, content)
+  end
+
+  Dir.glob("#{File.dirname(__FILE__)}/../xml/*.xml") do |path|
+    filename = File.basename(path, ".xml")
+
+    define_method("xml_" << filename) do
+      instance_variable_get("@#{filename}") || instance_variable_set("@#{filename}", File.read(path))
+    end
   end
 end

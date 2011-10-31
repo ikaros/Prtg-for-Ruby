@@ -74,12 +74,13 @@ module Prtg # :nodoc:
       {:username => @username, :passhash => passhash}
     end
 
-    def live_data
-      Prtg::Query.new(self)
+    def live_data(content)
+      Prtg::Query.new(self, content)
     end
 
     def api_request(params)
-      host.get("/api/table.xml?" + Utils.url_params(auth_params.merge(params))).body
+      xml = host.get("/api/table.xml?" + Utils.url_params(auth_params.merge(params))).body
+      Prtg.const_get(params[:content].capitalize).parse(xml)
     end
 
     def method_missing(*args)

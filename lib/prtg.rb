@@ -5,10 +5,10 @@ require "happymapper"
 require "prtg/client"
 require "prtg/query"
 require "prtg/sensor"
+require "prtg/sensors"
 require "prtg/utils"
 
-# = Description
-# This library is used to communicate with a prtg monitoring instance
+# This is a wrapper for the api of paessler's prtg monitoring tool.
 #
 # Simple Example:
 #   http = Net::HTTP.new("subdomain.domain.tld", 443)
@@ -16,7 +16,7 @@ require "prtg/utils"
 #   http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 #
 #   client = Prtg::Client.new(:host => http, :username => "foo", :password => "bar")
-#   puts client.live_data.content(:sensors)
+#   p client.live_data(:sensors)
 module Prtg
   VERSION = "0.0.1"
 end

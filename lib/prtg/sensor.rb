@@ -53,14 +53,5 @@ module Prtg # :nodoc:
     element :lastvalue, String
     element :favorite_raw, String
     element :minigraph, String
-
-    class Set
-
-      include HappyMapper
-
-      tag 'sensors'
-      has_many :sensors, Prtg::Sensor
-    end
-
   end
 end

@@ -1,4 +1,6 @@
 require "prtg/client"
+require "prtg/sensors"
+
 require  File.dirname(__FILE__) + "/helpers/client_helper_methods.rb"
 
 
@@ -43,54 +45,17 @@ describe Prtg::Client, "live_data" do
   include ClientHelperMethods
 
   it "instance a Prtg::Query" do
-    client = create_client
-    Prtg::Query.should_receive(:new).with(client).and_return(true)
-    client.live_data
+    client  = create_client
+    content = :sensors
+    Prtg::Query.should_receive(:new).with(client, content).and_return(true)
+    client.live_data(content)
+  end
+
+  it "parse the response xml" do
+    client = create_client(:passhash => "1111111")
+    client.host.expects(:get).returns(create_response(xml_sensor_set))
+
+    result = client.live_data(:sensors).execute
+    result.should be_instance_of(Prtg::Sensors)
   end
 end
-
-# describe Prtg::Client, "devices" do
-#
-#   include ClientHelperMethods
-#
-#   it "should return an hash" do
-#     client = create_client
-#     client.host.should_receive(:get).and_return(create_response(<<-XML))
-# <?xml version="1.0" encoding="UTF-8" ?>
-#   <devices>
-#    <prtg-version>8.4.2.2321</prtg-version>
-#    <item>
-#     <objid>2002</objid>
-#     <probe>prtgx (Strato)</probe>
-#     <group>Windows</group>
-#     <device>Homepage Calls</device>
-#     <host>127.0.0.1</host>
-#     <downsens_raw>0000000001</downsens_raw>
-#     <partialdownsens_raw>0000000000</partialdownsens_raw>
-#     <downacksens_raw>0000000000</downacksens_raw>
-#     <upsens_raw>0000000033</upsens_raw>
-#     <warnsens_raw>0000000000</warnsens_raw>
-#     <pausedsens_raw>0000000002</pausedsens_raw>
-#     <unusualsens_raw>0000000000</unusualsens_raw>
-#     <undefinedsens_raw>0000000000</undefinedsens_raw>
-#    </item>
-#    <item>
-#     <objid>2057</objid>
-#     <probe>prtgx (Strato)</probe>
-#     <group>Windows</group>
-#     <device>SSL Expiry Checks</device>
-#     <host>127.0.0.1</host>
-#     <downsens_raw>0000000000</downsens_raw>
-#     <partialdownsens_raw>0000000000</partialdownsens_raw>
-#     <downacksens_raw>0000000000</downacksens_raw>
-#     <upsens_raw>0000000016</upsens_raw>
-#     <warnsens_raw>0000000001</warnsens_raw>
-#     <pausedsens_raw>0000000001</pausedsens_raw>
-#     <unusualsens_raw>0000000001</unusualsens_raw>
-#     <undefinedsens_raw>0000000000</undefinedsens_raw>
-#    </item>
-# </devices>
-#     XML
-#     client.devices.should be_a(Hash)
-#   end
-# end

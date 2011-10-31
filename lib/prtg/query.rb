@@ -8,10 +8,11 @@ module Prtg # :nodoc:
     # BlankSlate
     instance_methods.each { |m| undef_method m unless m =~ /^(__|send|object_id)/ }
 
-    def initialize(client)
+    def initialize(client, content)
       @prtg_client = client
       @query_hash = {}
-      @query_hash[:output] = :xml
+      @query_hash[:output]  = :xml
+      @query_hash[:content] = content
     end
 
     # This single values for the query.
@@ -20,7 +21,7 @@ module Prtg # :nodoc:
     # content is like a table
     # count is like LIMIT
     # start is like OFFSET
-    VALUES = [:content, :count, :start, :output, :id]
+    VALUES = [:count, :start, :output, :id]
 
     VALUES.each do |key|
       define_method key do |value|

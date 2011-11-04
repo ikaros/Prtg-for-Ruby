@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<devices>
+	<prtg-version>8.4.2.2381</prtg-version>
+	<item>
+		<objid>0001</objid>
+		<probe>prtg Foo</probe>
+		<group>Barbaz</group>
+		<device>Homepage Calls</device>
+		<host>127.0.0.1</host>
+		<downsens_raw>0000000000</downsens_raw>
+		<partialdownsens_raw>0000000000</partialdownsens_raw>
+		<downacksens_raw>0000000000</downacksens_raw>
+		<upsens_raw>0000000050</upsens_raw>
+		<warnsens_raw>0000000000</warnsens_raw>
+		<pausedsens_raw>0000000000</pausedsens_raw>
+		<unusualsens_raw>0000000000</unusualsens_raw>
+		<undefinedsens_raw>0000000000</undefinedsens_raw>
+	</item>
+	<item>
+		<objid>0002</objid>
+		<probe>prtg Bar</probe>
+		<group>Barbaz</group>
+		<device>SSL Expiry Checks</device>
+		<host>127.0.0.1</host>
+		<downsens_raw>0000000000</downsens_raw>
+		<partialdownsens_raw>0000000000</partialdownsens_raw>
+		<downacksens_raw>0000000000</downacksens_raw>
+		<upsens_raw>0000000018</upsens_raw>
+		<warnsens_raw>0000000000</warnsens_raw>
+		<pausedsens_raw>0000000002</pausedsens_raw>
+		<unusualsens_raw>0000000000</unusualsens_raw>
+		<undefinedsens_raw>0000000000</undefinedsens_raw>
+	</item>
+	<item>
+		<objid>0003</objid>
+		<probe>prtgx (Strato)</probe>
+		<group>Windows</group>
+		<device>SiteScreenshots</device>
+		<host>127.0.0.1</host>
+		<downsens_raw>0000000000</downsens_raw>
+		<partialdownsens_raw>0000000000</partialdownsens_raw>
+		<downacksens_raw>0000000000</downacksens_raw>
+		<upsens_raw>0000000020</upsens_raw>
+		<warnsens_raw>0000000000</warnsens_raw>
+		<pausedsens_raw>0000000001</pausedsens_raw>
+		<unusualsens_raw>0000000000</unusualsens_raw>
+		<undefinedsens_raw>0000000000</undefinedsens_raw>
+	</item>
+<devices>

@@ -7,7 +7,7 @@ require "prtg/query"
 require "prtg/sensor"
 require "prtg/device"
 require "prtg/value"
-require "prtg/life_data_response"
+require "prtg/live_data_response"
 require "prtg/utils"
 
 # This is a wrapper for the api of paessler's prtg monitoring tool.

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<values>
+	<item>
+		<datetime>02.11.2011 16:00:00 - 16:05:00</datetime>
+		<datetime_raw>40849.6284722222</datetime_raw>
+		<value>162 msec</value>
+		<value_raw>161.8000</value_raw>
+		<value>64.536 Byte</value>
+		<value_raw>64536.4000</value_raw>
+		<value>5.380 Kbit/s</value>
+		<value_raw>5379.8000</value_raw>
+		<value>65 msec</value>
+		<value_raw>65.4000</value_raw>
+		<value>0 %</value>
+		<value_raw>0.0000</value_raw>
+		<coverage>100 %</coverage>
+		<coverage_raw>0000010000</coverage_raw>
+	</item>
+	<item>
+		<datetime>02.11.2011 16:05:00 - 16:10:00</datetime>
+		<datetime_raw>40849.6319444444</datetime_raw>
+		<value>161 msec</value>
+		<value_raw>161.0000</value_raw>
+		<value>64.409 Byte</value>
+		<value_raw>64408.6000</value_raw>
+		<value>5.322 Kbit/s</value>
+		<value_raw>5321.6000</value_raw>
+		<value>63 msec</value>
+		<value_raw>63.4000</value_raw>
+		<value>0 %</value>
+		<value_raw>0.0000</value_raw>
+		<coverage>100 %</coverage>
+		<coverage_raw>0000010000</coverage_raw>
+	</item>
+	<item>
+		<datetime>02.11.2011 16:10:00 - 16:15:00</datetime>
+		<datetime_raw>40849.6354166667</datetime_raw>
+		<value>177 msec</value>
+		<value_raw>177.4000</value_raw>
+		<value>64.478 Byte</value>
+		<value_raw>64478.0000</value_raw>
+		<value>5.213 Kbit/s</value>
+		<value_raw>5213.2000</value_raw>
+		<value>77 msec</value>
+		<value_raw>76.8000</value_raw>
+		<value>0 %</value>
+		<value_raw>0.0000</value_raw>
+		<coverage>100 %</coverage>
+		<coverage_raw>0000010000</coverage_raw>
+	</item>
+	<item>
+		<datetime>02.11.2011 16:15:00 - 16:20:00</datetime>
+		<datetime_raw>40849.6388888889</datetime_raw>
+		<value>169 msec</value>
+		<value_raw>169.2000</value_raw>
+		<value>64.224 Byte</value>
+		<value_raw>64223.6000</value_raw>
+		<value>5.492 Kbit/s</value>
+		<value_raw>5492.4000</value_raw>
+		<value>75 msec</value>
+		<value_raw>75.2000</value_raw>
+		<value>0 %</value>
+		<value_raw>0.0000</value_raw>
+		<coverage>100 %</coverage>
+		<coverage_raw>0000010000</coverage_raw>
+	</item>
+	<item>
+		<datetime>02.11.2011 16:20:00 - 16:25:00</datetime>
+		<datetime_raw>40849.6423611111</datetime_raw>
+		<value>166 msec</value>
+		<value_raw>166.4000</value_raw>
+		<value>64.293 Byte</value>
+		<value_raw>64293.0000</value_raw>
+		<value>5.205 Kbit/s</value>
+		<value_raw>5204.8000</value_raw>
+		<value>67 msec</value>
+		<value_raw>67.2000</value_raw>
+		<value>0 %</value>
+		<value_raw>0.0000</value_raw>
+		<coverage>100 %</coverage>
+		<coverage_raw>0000010000</coverage_raw>
+	</item>
+	<item>
+		<datetime>02.11.2011 16:25:00 - 16:30:00</datetime>
+		<datetime_raw>40849.6458333333</datetime_raw>
+		<value>168 msec</value>
+		<value_raw>168.4000</value_raw>
+		<value>64.560 Byte</value>
+		<value_raw>64559.6000</value_raw>
+		<value>5.128 Kbit/s</value>
+		<value_raw>5127.6000</value_raw>
+		<value>67 msec</value>
+		<value_raw>66.8000</value_raw>
+		<value>0 %</value>
+		<value_raw>0.0000</value_raw>
+		<coverage>100 %</coverage>
+		<coverage_raw>0000010000</coverage_raw>
+	</item>
+</values>

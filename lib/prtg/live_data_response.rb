@@ -1,6 +1,7 @@
 require "happymapper"
 require "prtg/device"
 require "prtg/sensor"
+require "prtg/value"
 
 module Prtg # :nodoc:
   module LiveDataResponse
@@ -15,6 +16,12 @@ module Prtg # :nodoc:
       include HappyMapper
       tag :devices
       has_many :devices, Prtg::Device
+    end
+
+    class Values
+      include HappyMapper
+      tag :values
+      has_many :values, Prtg::Value
     end
 
   end

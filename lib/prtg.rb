@@ -6,6 +6,7 @@ require "prtg/client"
 require "prtg/query"
 require "prtg/sensor"
 require "prtg/device"
+require "prtg/value"
 require "prtg/life_data_response"
 require "prtg/utils"
 

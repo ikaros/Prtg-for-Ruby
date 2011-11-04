@@ -80,12 +80,7 @@ module Prtg # :nodoc:
 
     def api_request(params)
       raw_response = host.get("/api/table.xml?" + Utils.url_params(auth_params.merge(params))).body
-
-      if parser = params.delete(:parser)
-        parser.parse(raw_response)
-      else
-        raw_response
-      end
+      Prtg::LiveDataResponse.const_get(params[:content].capitalize).parse(raw_response)
     end
 
     def method_missing(*args)

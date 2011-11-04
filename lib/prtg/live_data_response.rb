@@ -1,13 +1,21 @@
 require "happymapper"
+require "prtg/device"
+require "prtg/sensor"
 
 module Prtg # :nodoc:
-  class LiveDataResponse
+  module LiveDataResponse
 
-    include HappyMapper
+    class Sensors
+      include HappyMapper
+      tag :sensors
+      has_many :sensors, Prtg::Sensor
+    end
 
-    tag :sensors
-    has_many :sensors, Prtg::Sensor
-
+    class Devices
+      include HappyMapper
+      tag :devices
+      has_many :devices, Prtg::Device
+    end
 
   end
 end

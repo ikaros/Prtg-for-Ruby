@@ -5,6 +5,7 @@ require "happymapper"
 require "prtg/client"
 require "prtg/query"
 require "prtg/sensor"
+require "prtg/device"
 require "prtg/life_data_response"
 require "prtg/utils"
 

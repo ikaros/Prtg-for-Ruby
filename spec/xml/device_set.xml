@@ -33,7 +33,7 @@
 	</item>
 	<item>
 		<objid>0003</objid>
-		<probe>prtgx (Strato)</probe>
+		<probe>prtg Baz</probe>
 		<group>Windows</group>
 		<device>SiteScreenshots</device>
 		<host>127.0.0.1</host>
@@ -46,4 +46,4 @@
 		<unusualsens_raw>0000000000</unusualsens_raw>
 		<undefinedsens_raw>0000000000</undefinedsens_raw>
 	</item>
-<devices>
+</devices>

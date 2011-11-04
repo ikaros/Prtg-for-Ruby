@@ -1,4 +1,5 @@
 require "prtg/client"
+require "prtg/live_data_response"
 
 require  File.dirname(__FILE__) + "/helpers/client_helper_methods.rb"
 

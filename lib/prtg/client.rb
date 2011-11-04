@@ -79,8 +79,13 @@ module Prtg # :nodoc:
     end
 
     def api_request(params)
-      xml = host.get("/api/table.xml?" + Utils.url_params(auth_params.merge(params))).body
-      Prtg.const_get(params[:content].capitalize).parse(xml)
+      raw_response = host.get("/api/table.xml?" + Utils.url_params(auth_params.merge(params))).body
+
+      if parser = params.delete(:parser)
+        parser.parse(raw_response)
+      else
+        raw_response
+      end
     end
 
     def method_missing(*args)

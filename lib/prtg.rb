@@ -5,7 +5,7 @@ require "happymapper"
 require "prtg/client"
 require "prtg/query"
 require "prtg/sensor"
-require "prtg/sensors"
+require "prtg/life_data_response"
 require "prtg/utils"
 
 # This is a wrapper for the api of paessler's prtg monitoring tool.

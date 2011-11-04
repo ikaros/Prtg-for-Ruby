@@ -13,6 +13,7 @@ module Prtg # :nodoc:
       @query_hash = {}
       @query_hash[:output]  = :xml
       @query_hash[:content] = content
+      @query_hash[:parser]  = Prtg::LiveDataResponse
     end
 
     # This single values for the query.

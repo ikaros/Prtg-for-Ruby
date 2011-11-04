@@ -1,5 +1,4 @@
 require "prtg/client"
-require "prtg/sensors"
 
 require  File.dirname(__FILE__) + "/helpers/client_helper_methods.rb"
 
@@ -54,8 +53,7 @@ describe Prtg::Client, "live_data" do
   it "parse the response xml" do
     client = create_client(:passhash => "1111111")
     client.host.expects(:get).returns(create_response(xml_sensor_set))
-
     result = client.live_data(:sensors).execute
-    result.should be_instance_of(Prtg::Sensors)
+    result = Prtg::LiveDataResponse
   end
 end

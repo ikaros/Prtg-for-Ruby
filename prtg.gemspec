@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version     = '>= 1.8.7'
   s.required_rubygems_version = ">= 1.3.6"
 
-  s.add_dependency('happymapper', '>= 0.4.0')
+  s.add_dependency('xml-simple', '>= 1.1.1')
 
   s.files = Dir.glob("lib/**/*")
 

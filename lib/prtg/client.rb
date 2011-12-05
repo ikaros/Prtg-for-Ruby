@@ -3,6 +3,7 @@ require "uri"
 require "cgi"
 require "prtg/query"
 require "prtg/utils"
+require 'xmlsimple'
 
 module Prtg # :nodoc:
   class Client
@@ -79,8 +80,8 @@ module Prtg # :nodoc:
     end
 
     def api_request(params)
-      raw_response = host.get("/api/table.xml?" + Utils.url_params(auth_params.merge(params))).body
-      Prtg::LiveDataResponse.const_get(params[:content].capitalize).parse(raw_response)
+      resp_body = host.get("/api/table.xml?" + Utils.url_params(auth_params.merge(params))).body
+      XmlSimple.xml_in(resp_body)
     end
 
     def method_missing(*args)

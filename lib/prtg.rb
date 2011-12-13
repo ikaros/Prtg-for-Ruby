@@ -1,10 +1,7 @@
 # encoding: utf-8
 require "rubygems"
-require "happymapper"
-
 require "prtg/client"
 require "prtg/query"
-require "prtg/live_data_response"
 require "prtg/utils"
 
 # This is a wrapper for the api of paessler's prtg monitoring tool.

@@ -1,4 +1,0 @@
-The api is to bloated. It have to make it more slim.
-May i should make it possible to retrieve XML, JSON,
-CSV as String and provide parsers for the formats.
-And the parser produces nested arrays and hashes.

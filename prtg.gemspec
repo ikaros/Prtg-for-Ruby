@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'prtg'
-  s.version     = '0.0.3'
+  s.version     = '0.0.4'
   s.summary     = 'Wrapper for the prtg network monitor api (http://www.paessler.com/prtg)'
   s.description = 'This gem is a wrapper around the prth http api.Prtg is an network monitoring solution which provides a api to retrieve several information about monitored devices.'
 

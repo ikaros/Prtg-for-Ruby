@@ -48,11 +48,11 @@ module Prtg # :nodoc:
      self
    end
 
-   def method_missing(*args)
+   def method_missing(*args, &block)
      if args.first.to_s.start_with? "filter"
        add_filter(*args)
      else
-       execute.send(*args)
+       execute.send(*args, &block)
      end
    end
 

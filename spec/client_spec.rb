@@ -1,5 +1,4 @@
 require "prtg/client"
-require "prtg/live_data_response"
 
 require  File.dirname(__FILE__) + "/helpers/client_helper_methods.rb"
 
@@ -40,6 +39,16 @@ describe Prtg::Client, "passhash" do
   end
 end
 
+describe Prtg::Client, "getstatus" do
+
+  include ClientHelperMethods
+
+  it "should return the current prtg status" do
+    client = create_client(:passhash => "1111111")
+    client.host.expects(:get).returns(create_response(xml_getstatus))
+  end
+end
+
 describe Prtg::Client, "live_data" do
 
   include ClientHelperMethods
@@ -55,6 +64,5 @@ describe Prtg::Client, "live_data" do
     client = create_client(:passhash => "1111111")
     client.host.expects(:get).returns(create_response(xml_sensor_set))
     result = client.live_data(:sensors).execute
-    result = Prtg::LiveDataResponse
   end
 end

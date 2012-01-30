@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<status>
+	<NewMessages>0</NewMessages>
+	<NewAlarms>0</NewAlarms>
+	<Alarms>1</Alarms>
+	<AckAlarms></AckAlarms>
+	<NewToDos>2</NewToDos>
+	<Clock>14.12.2011 16:18:42</Clock>
+	<ActivationStatusMessage></ActivationStatusMessage>
+	<BackgroundTasks>0</BackgroundTasks>
+	<AutoDiscoTasks>0</AutoDiscoTasks>
+	<Version>9.1.5.1900</Version>
+	<PRTGUpdateAvailable>no</PRTGUpdateAvailable>
+</status>

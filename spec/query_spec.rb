@@ -1,7 +1,5 @@
 require "prtg/client"
 require "prtg/query"
-require "prtg/device"
-require "prtg/value"
 require "mocha"
 require  File.dirname(__FILE__) + "/helpers/client_helper_methods.rb"
 

@@ -45,7 +45,8 @@ module Prtg # :nodoc:
     end
 
     def getstatus
-      host.get("/api/getstatus.xml")
+      url_params = Utils.url_params(auth_params)
+      parse_response(host.get("/api/getstatus.xml" + url_params))
     end
 
     def devices
@@ -80,12 +81,27 @@ module Prtg # :nodoc:
     end
 
     def api_request(params)
-      resp_body = host.get("/api/table.xml?" + Utils.url_params(auth_params.merge(params))).body
-      XmlSimple.xml_in(resp_body)
+      url_params = Utils.url_params(auth_params.merge(params))
+      response   = host.get("/api/table.xml?" + url_params)
+
+      parse_response(response)
     end
 
     def method_missing(*args)
       super(*args)
+    end
+
+    private
+
+    def parse_response(response)
+      hash = XmlSimple.xml_in(response.body)
+
+      if hash["error"]
+        raise hash["error"]
+
+      else
+        hash["item"]
+      end
     end
   end
 end

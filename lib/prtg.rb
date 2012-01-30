@@ -16,5 +16,5 @@ require "#{dir}/prtg/utils"
 #   client = Prtg::Client.new(:host => http, :username => "foo", :password => "bar")
 #   p client.live_data(:sensors)
 module Prtg
-  VERSION = "0.0.1p3"
+  VERSION = "0.0.3"
 end

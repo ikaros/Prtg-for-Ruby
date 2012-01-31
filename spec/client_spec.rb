@@ -63,6 +63,33 @@ describe Prtg::Client, "live_data" do
   it "parse the response xml" do
     client = create_client(:passhash => "1111111")
     client.host.expects(:get).returns(create_response(xml_sensor_set))
-    result = client.live_data(:sensors).execute
+    client.live_data(:sensors).should eql [
+
+      { "objid" =>"100001",
+        "probe" =>"prtg HORST 10.10.10.10",
+        "group" => "Switches",
+        "device" => "onetcore1",
+        "sensor" => "PING",
+        "status" => "Up",
+        "status_raw" => "3",
+        "message_raw" => "OK",
+        "lastvalue" => "2 msec",
+        "lastvalue_raw" => "2.0000",
+        "priority" => "5",
+        "favorite_raw" => "0"},
+
+      { "objid" => "100002",
+        "probe" => "prtg HORST 10.10.10.10",
+        "group" => "Switches",
+        "device" => "onettt001",
+        "sensor" => "PING",
+        "status" => "Up",
+        "status_raw" => "3",
+        "message_raw" => "OK",
+        "lastvalue" => "0 msec",
+        "lastvalue_raw" => "0.0000",
+        "priority" => "5",
+        "favorite_raw" => "0"}
+    ]
   end
 end

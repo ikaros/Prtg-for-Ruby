@@ -94,7 +94,7 @@ module Prtg # :nodoc:
     private
 
     def parse_response(response)
-      hash = XmlSimple.xml_in(response.body)
+      hash = XmlSimple.xml_in(response.body, "ForceArray" => false)
 
       if hash["error"]
         raise hash["error"]

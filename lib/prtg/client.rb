@@ -82,7 +82,11 @@ module Prtg # :nodoc:
 
     def api_request(params)
       url_params = Utils.url_params(auth_params.merge(params))
-      response   = host.get("/api/table.xml?" + url_params)
+
+      response = host.get(
+        "/api/table.xml?#{ url_params }",
+        { "Accept-Encoding" => "*"}
+      )
 
       parse_response(response)
     end

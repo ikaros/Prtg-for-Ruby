@@ -19,7 +19,7 @@ module Prtg # :nodoc:
     # content is like a table
     # count is like LIMIT
     # start is like OFFSET
-    VALUES = [:count, :start, :output, :objid]
+    VALUES = [:count, :start, :output, :id]
 
     VALUES.each do |key|
       define_method key do |value|

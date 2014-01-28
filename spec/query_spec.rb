@@ -1,6 +1,6 @@
 require "prtg/client"
 require "prtg/query"
-require "mocha"
+require "mocha/api"
 require  File.dirname(__FILE__) + "/helpers/client_helper_methods.rb"
 
 Prtg::Query::MULTIPLE_VALUES.each do |value|
@@ -9,7 +9,7 @@ Prtg::Query::MULTIPLE_VALUES.each do |value|
     include ClientHelperMethods
 
     it "adds #{value} to query" do
-      client = mock('Prtg::Client')
+      client = double('Prtg::Client')
       client.should_receive(:api_request).
              with(hash_including(value => [:tags]))
 
@@ -19,7 +19,7 @@ Prtg::Query::MULTIPLE_VALUES.each do |value|
     end
 
     it "adds multiple #{value} to query at once" do
-      client = mock('Prtg::Client')
+      client = double('Prtg::Client')
       client.should_receive(:api_request).
              with(hash_including(value => [:objid, :tags]))
 
@@ -29,7 +29,7 @@ Prtg::Query::MULTIPLE_VALUES.each do |value|
     end
 
     it "adds multiple #{value} to query step by step" do
-      client = mock('Prtg::Client')
+      client = double('Prtg::Client')
       client.should_receive(:api_request).
              with(hash_including(value => [:objid, :tags]))
 
@@ -47,7 +47,7 @@ Prtg::Query::VALUES.each do |value|
     include ClientHelperMethods
 
     it "sets the query's #{value}" do
-      client = mock('Prtg::Client')
+      client = double('Prtg::Client')
       client.should_receive(:api_request).
              with(hash_including(value => 100))
 
@@ -57,7 +57,7 @@ Prtg::Query::VALUES.each do |value|
     end
 
     it "overwrites the query's #{value}" do
-      client = mock('Prtg::Client')
+      client = double('Prtg::Client')
       client.should_receive(:api_request).
              with(hash_including(value => 100))
 
@@ -75,7 +75,7 @@ describe Prtg::Query, "output" do
   include ClientHelperMethods
 
   it "has :xml as default value" do
-    client = mock('Prtg::Client')
+    client = double('Prtg::Client')
     client.should_receive(:api_request).
            with(hash_including(:output => :xml))
 
@@ -89,7 +89,7 @@ describe Prtg::Query, "execute" do
   include ClientHelperMethods
 
   it "call the clients 'api_request' instance method" do
-    client = mock('Prtg::Client')
+    client = double('Prtg::Client')
     client.should_receive(:api_request).
            with(hash_including(:columns => [:id, :tags,], :count => 100))
 
@@ -101,12 +101,12 @@ describe Prtg::Query, "execute" do
   end
 
   it "forwards the result of execute on method missing" do
-    result= mock("String")
+    result= double("String")
     result.should_receive(:size).
            and_return(4)
 
 
-    client = mock('Prtg::Client')
+    client = double('Prtg::Client')
     client.should_receive(:api_request).
            and_return(result)
 
@@ -120,7 +120,7 @@ describe Prtg::Query, "add_filter" do
   include ClientHelperMethods
 
   it "should add a filter rule to the query " do
-    client = mock('Prtg::Client')
+    client = double('Prtg::Client')
     client.should_receive(:api_request).
            with(hash_including(:filter_tags => :http_sensor))
 

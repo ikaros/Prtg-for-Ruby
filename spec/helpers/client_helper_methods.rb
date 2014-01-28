@@ -1,4 +1,4 @@
-require "mocha"
+require "mocha/api"
 
 module ClientHelperMethods
   def create_host
@@ -16,7 +16,7 @@ module ClientHelperMethods
   end
 
   def create_response(content)
-    response = mock('Net::HTTPResponse')
+    response = double('Net::HTTPResponse')
     response.stubs(:code => '200',
                    :message => "OK",
                    :content_type => "text/html",

@@ -3,7 +3,7 @@ dir = File.dirname(__FILE__)
 $LOAD_PATH.unshift dir unless $LOAD_PATH.include?(dir)
 require "rubygems"
 require "#{dir}/prtg/client"
-require "#{dir}/prtg/query"
+require "#{dir}/prtg/live_data_query"
 require "#{dir}/prtg/utils"
 
 # This is a wrapper for the api of paessler's prtg monitoring tool.

@@ -53,10 +53,10 @@ describe Prtg::Client, "live_data" do
 
   include ClientHelperMethods
 
-  it "instance a Prtg::Query" do
+  it "instance a Prtg::LiveDataQuery" do
     client  = create_client
     content = :sensors
-    Prtg::Query.should_receive(:new).with(client, content).and_return(true)
+    Prtg::LiveDataQuery.should_receive(:new).with(client, content).and_return(true)
     client.live_data(content)
   end
 

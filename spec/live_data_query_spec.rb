@@ -1,10 +1,10 @@
 require "prtg/client"
-require "prtg/query"
+require "prtg/live_data_query"
 require "mocha/api"
 require  File.dirname(__FILE__) + "/helpers/client_helper_methods.rb"
 
-Prtg::Query::MULTIPLE_VALUES.each do |value|
-  describe Prtg::Query, value.to_s do
+Prtg::LiveDataQuery::MULTIPLE_VALUES.each do |value|
+  describe Prtg::LiveDataQuery, value.to_s do
 
     include ClientHelperMethods
 
@@ -41,8 +41,8 @@ Prtg::Query::MULTIPLE_VALUES.each do |value|
   end
 end
 
-Prtg::Query::VALUES.each do |value|
-  describe Prtg::Query, value.to_s do
+Prtg::LiveDataQuery::VALUES.each do |value|
+  describe Prtg::LiveDataQuery, value.to_s do
 
     include ClientHelperMethods
 
@@ -70,7 +70,7 @@ Prtg::Query::VALUES.each do |value|
 end
 
 
-describe Prtg::Query, "output" do
+describe Prtg::LiveDataQuery, "output" do
 
   include ClientHelperMethods
 
@@ -84,7 +84,7 @@ describe Prtg::Query, "output" do
   end
 end
 
-describe Prtg::Query, "execute" do
+describe Prtg::LiveDataQuery, "execute" do
 
   include ClientHelperMethods
 
@@ -115,7 +115,7 @@ describe Prtg::Query, "execute" do
   end
 end
 
-describe Prtg::Query, "add_filter" do
+describe Prtg::LiveDataQuery, "add_filter" do
 
   include ClientHelperMethods
 

@@ -77,7 +77,7 @@ module Prtg # :nodoc:
     end
 
     def live_data(content)
-      Prtg::Query.new(self, content)
+      Prtg::LiveDataQuery.new(self, content)
     end
 
     def api_request(params)

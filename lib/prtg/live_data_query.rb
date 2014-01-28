@@ -1,7 +1,7 @@
 module Prtg # :nodoc:
 
   # Proxy class to caspule request
-  class Query
+  class LiveDataQuery
 
     # BlankSlate
     instance_methods.each { |m| undef_method m unless m =~ /^(__|send|object_id)/ }

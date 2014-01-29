@@ -6,14 +6,14 @@ module Prtg # :nodoc:
 
       def api_value(name)
         define_method name do |value|
-          @query_hash[name] = value
+          @query[name] = value
           self
         end
       end
 
       def api_list(name)
         define_method name do |*args|
-          @query_hash[name] = (@query_hash[name] || []) | args
+          @query[name] = (@query[name] || []) | args
           self
         end
       end
@@ -24,17 +24,17 @@ module Prtg # :nodoc:
 
       def initialize(client, content)
         @prtg_client = client
-        @query_hash = {}
-        @query_hash[:output]  = :xml
-        @query_hash[:content] = content
+        @query = {}
+        @query[:output]  = :xml
+        @query[:content] = content
       end
 
       def execute
-        @prtg_client.api_request(@query_hash)
+        @prtg_client.api_request(@query)
       end
 
       def add_filter(name, value)
-        @query_hash[name.to_sym] = value
+        @query[name.to_sym] = value
         self
       end
 

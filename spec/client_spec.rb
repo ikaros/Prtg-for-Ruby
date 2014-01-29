@@ -49,14 +49,14 @@ describe Prtg::Client, "getstatus" do
   end
 end
 
-describe Prtg::Client, "live_data" do
+describe Prtg::Client, "table" do
 
   include ClientHelperMethods
 
   it "parse the response xml" do
     client = create_client(:passhash => "1111111")
     client.host.expects(:get).returns(create_response(xml_sensor_set))
-    client.live_data.content(:sensors).should eql [
+    client.table.content(:sensors).should eql [
 
       { "objid" =>"100001",
         "probe" =>"prtg HORST 10.10.10.10",

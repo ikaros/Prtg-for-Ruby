@@ -76,8 +76,8 @@ module Prtg # :nodoc:
       {:username => @username, :passhash => passhash}
     end
 
-    def live_data
-      Prtg::LiveDataQuery.new(@host, auth_params)
+    def table
+      Prtg::TableQuery.new(@host, auth_params)
     end
 
   end

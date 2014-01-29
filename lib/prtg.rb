@@ -4,7 +4,7 @@ $LOAD_PATH.unshift dir unless $LOAD_PATH.include?(dir)
 require "rubygems"
 require "#{dir}/prtg/client"
 require "#{dir}/prtg/query"
-require "#{dir}/prtg/live_data_query"
+require "#{dir}/prtg/table_query"
 require "#{dir}/prtg/utils"
 
 # This is a wrapper for the api of paessler's prtg monitoring tool.
@@ -15,7 +15,7 @@ require "#{dir}/prtg/utils"
 #   http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 #
 #   client = Prtg::Client.new(:host => http, :username => "foo", :password => "bar")
-#   p client.live_data(:sensors)
+#   p client.table(:sensors)
 module Prtg
   VERSION = "0.0.5"
 end

@@ -4,6 +4,10 @@ module Prtg # :nodoc:
 
     module ClassMethods
 
+      def api_url(url)
+        define_method(:api_url) { url }
+      end
+
       def api_value(name)
         define_method name do |value|
           @query[name] = value
@@ -32,7 +36,7 @@ module Prtg # :nodoc:
         url_params = Utils.url_params(@query)
 
         parse_response @host.get(
-          "/api/table.xml?#{ url_params }",
+          "#{ api_url }?#{ url_params }",
           { "Accept-Encoding" => "*"}
         )
       end

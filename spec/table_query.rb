@@ -1,22 +1,22 @@
 require "prtg/client"
-require "prtg/live_data_query"
+require "prtg/table_query"
 require "mocha/api"
 require  File.dirname(__FILE__) + "/helpers/client_helper_methods.rb"
 
-describe Prtg::LiveDataQuery do
+describe Prtg::TableQuery do
 
   include ClientHelperMethods
 
   before(:each) do
     @host  = double("Net::HTTP")
     allow(@host).to receive(:get).and_return(double('Foo', body: xml_sensor_set))
-    @query = Prtg::LiveDataQuery.new(@host)
+    @query = Prtg::TableQuery.new(@host)
   end
 
-  Prtg::LiveDataQuery::MULTIPLE_VALUES.each do |value|
+  Prtg::TableQuery::MULTIPLE_VALUES.each do |value|
 
 
-    describe Prtg::LiveDataQuery, value.to_s do
+    describe Prtg::TableQuery, value.to_s do
 
       include ClientHelperMethods
 
@@ -48,8 +48,8 @@ describe Prtg::LiveDataQuery do
     end
   end
 
-  Prtg::LiveDataQuery::VALUES.each do |value|
-    describe Prtg::LiveDataQuery, value.to_s do
+  Prtg::TableQuery::VALUES.each do |value|
+    describe Prtg::TableQuery, value.to_s do
 
       include ClientHelperMethods
 
@@ -73,7 +73,7 @@ describe Prtg::LiveDataQuery do
   end
 
 
-  describe Prtg::LiveDataQuery, "execute" do
+  describe Prtg::TableQuery, "execute" do
 
     include ClientHelperMethods
 
@@ -89,7 +89,7 @@ describe Prtg::LiveDataQuery do
 
   end
 
-  describe Prtg::LiveDataQuery, "add_filter" do
+  describe Prtg::TableQuery, "add_filter" do
 
     include ClientHelperMethods
 

@@ -76,8 +76,17 @@ module Prtg # :nodoc:
       {:username => @username, :passhash => passhash}
     end
 
+    def live_data(content)
+      warn "[DEPRECATION] Client#live_data is depricated. Please use 'Client#table.content(#{ content }) instead."
+      table.content(content)
+    end
+
     def table
       Prtg::TableQuery.new(@host, auth_params)
+    end
+
+    def historicdata
+      Prtg::HistoricDataQuery.new(@host, auth_params)
     end
 
   end

@@ -5,6 +5,7 @@ require "rubygems"
 require "#{dir}/prtg/client"
 require "#{dir}/prtg/query"
 require "#{dir}/prtg/table_query"
+require "#{dir}/prtg/historic_data_query"
 require "#{dir}/prtg/utils"
 
 # This is a wrapper for the api of paessler's prtg monitoring tool.

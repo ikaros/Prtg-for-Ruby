@@ -53,17 +53,10 @@ describe Prtg::Client, "live_data" do
 
   include ClientHelperMethods
 
-  it "instance a Prtg::LiveDataQuery" do
-    client  = create_client
-    content = :sensors
-    Prtg::LiveDataQuery.should_receive(:new).with(client, content).and_return(true)
-    client.live_data(content)
-  end
-
   it "parse the response xml" do
     client = create_client(:passhash => "1111111")
     client.host.expects(:get).returns(create_response(xml_sensor_set))
-    client.live_data(:sensors).should eql [
+    client.live_data.content(:sensors).should eql [
 
       { "objid" =>"100001",
         "probe" =>"prtg HORST 10.10.10.10",

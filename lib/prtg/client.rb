@@ -76,36 +76,9 @@ module Prtg # :nodoc:
       {:username => @username, :passhash => passhash}
     end
 
-    def live_data(content)
-      Prtg::LiveDataQuery.new(self, content)
+    def live_data
+      Prtg::LiveDataQuery.new(@host, auth_params)
     end
 
-    def api_request(params)
-      url_params = Utils.url_params(auth_params.merge(params))
-
-      response = host.get(
-        "/api/table.xml?#{ url_params }",
-        { "Accept-Encoding" => "*"}
-      )
-
-      parse_response(response)
-    end
-
-    def method_missing(*args)
-      super(*args)
-    end
-
-    private
-
-    def parse_response(response)
-      hash = XmlSimple.xml_in(response.body, "ForceArray" => false)
-
-      if hash["error"]
-        raise hash["error"]
-
-      else
-        hash["item"]
-      end
-    end
   end
 end

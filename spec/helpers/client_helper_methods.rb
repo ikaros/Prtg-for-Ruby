@@ -24,10 +24,6 @@ module ClientHelperMethods
     response
   end
 
-  def create_query(client=create_client, content=:sensors)
-    Prtg::LiveDataQuery.new(client, content)
-  end
-
   Dir.glob("#{File.dirname(__FILE__)}/../xml/*.xml") do |path|
     filename = File.basename(path, ".xml")
 

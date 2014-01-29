@@ -22,15 +22,19 @@ module Prtg # :nodoc:
 
     module InstanceMethods
 
-      def initialize(client, content)
-        @prtg_client = client
-        @query = {}
+      def initialize(host, auth_params={})
+        @host = host
+        @query = {}.merge(auth_params)
         @query[:output]  = :xml
-        @query[:content] = content
       end
 
       def execute
-        @prtg_client.api_request(@query)
+        url_params = Utils.url_params(@query)
+
+        parse_response @host.get(
+          "/api/table.xml?#{ url_params }",
+          { "Accept-Encoding" => "*"}
+        )
       end
 
       def add_filter(name, value)
@@ -43,6 +47,19 @@ module Prtg # :nodoc:
           add_filter(*args)
         else
           execute.send(*args, &block)
+        end
+      end
+
+      private
+
+      def parse_response(response)
+        hash = XmlSimple.xml_in(response.body, "ForceArray" => false)
+
+        if hash["error"]
+          raise hash["error"]
+
+        else
+          hash["item"]
         end
       end
     end

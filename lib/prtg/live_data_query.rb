@@ -6,7 +6,7 @@ module Prtg # :nodoc:
 
     include Prtg::Query
 
-    VALUES = [:count, :start, :output, :id]
+    VALUES = [:content, :count, :start, :output, :id]
     VALUES.each { |k| api_value k }
 
     MULTIPLE_VALUES = [:columns]
